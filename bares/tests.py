@@ -4,7 +4,7 @@ from .models import Bar,Tapa
 
 # Create your tests here.
 
-class TestBarTestCase):
+class TestBar(TestCase):
 
 	def test_crear_bar(self):
 		b = Bar(nombre="bar", direccion="direccion",numero_visita=0)
