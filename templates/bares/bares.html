@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} {{nombre_bar}} {% endblock %}
+
+{% block body_block %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bares</title>
+    </head>
+
+    <body>
+        {% if bar %}
+        <h1>{{ nombre_bar }}</h1>
+            <h3 class="panel-title">Tapas</h3>
+            {% if tapas %}
+            <ul class="list-group">
+                {% for tapa in tapas %}
+                <li class="list-group-item"><a href="{{ tapa.url }}">{{ tapa.nombre }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>No hay tapas registradas.</strong>
+            {% endif %}
+        {% else %}
+            ¡El bar {{ nombre_bar }} no existe!
+        {% endif %}
+    </body>
+</html>
+
+
+<h3 class="panel-title">Localización</h3>
+{% load easy_maps_tags %}
+<!-- Default map with 300x400 dimensions -->
+{% easy_map  dire_bar   300 400 %}
+{% load easy_maps_tags cache %}
+{% cache 600 my_map firm.address %}
+    {% easy_map firm.address 300 400 %}
+{% endcache %}
+
+
+
+{% endblock %}
+
+

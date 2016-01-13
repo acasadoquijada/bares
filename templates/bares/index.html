@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Index{% endblock %}
+
+        {% block body_block %}
+{% if user.is_authenticated %}
+    <div class="page-header">
+
+                <h1>¡Bienvenido a bares {{ user.username }}!</h1>
+            {% else %}
+                <h1>¡Bienvenido a bares!</h1>
+            {% endif %}
+</div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+                <h3 class="panel-title">Bares del momento</h3>
+
+              {% if bares %}
+                    <ul class="list-group">
+                        {% for bar in bares %}
+                         <li class="list-group-item"><a href="{% url 'bares'  bar.slug %}"> {{ bar.nombre }}</a> <span class="label label-default"> {{bar.numero_visita}} </span></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <strong>There are no categories present.</strong>
+                {% endif %}
+
+            </div>
+
+
+          </div>
+
+        {% endblock %}
