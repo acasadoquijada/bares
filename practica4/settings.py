@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bares',
     'easy_maps',
+    'bootstrap_toolkit',
 ]
 
 if django.VERSION < (1, 7):

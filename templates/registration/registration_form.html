@@ -4,7 +4,7 @@
 {% block body_block %}
 <form role="form"  method="post" action=".">
                 {% csrf_token %}
-
+               
 <h2 class="form-signin-heading">Regístrate aquí</h2>
 
 <div class="form-group" >
@@ -20,8 +20,8 @@
         <input class="form-control" id="id_password1" name="password1" type="password" placeholder="Introduce contraseña" /></p>
 </div>
 <div class="form-group">
-    <p class="required"><label for="id_password2">Repite la contraseña:</label>
- <input class="form-control" id="id_password2" name="password2" type="password" placeholder="Introduce contraseña otra vez" /></p>
+    <p class="required"><label for="id_password2">Repite contraseña:</label>
+ <input class="form-control" id="id_password2" name="password2" type="password" placeholder="Repite la contraseña" /></p>
 </div>
 
 <button type="submit" class="btn btn-default">Registrarse</button>

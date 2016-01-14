@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from bares.models import Bar, Tapa
 from bares.forms import TapaForm
+from django.http import JsonResponse
 
 def index(request):
     # Query the database for a list of ALL categories currently stored.
@@ -69,5 +70,13 @@ def add_tapa(request):
 
     return render(request, 'bares/add_tapa.html', context_dict)
         
-        
+def reclama_datos (request):
+
+    bares = Bar.objects.order_by('-numero_visita')[:3]
+
+    datos={'bares':[bares[0].nombre,bares[1].nombre,bares[2].nombre], 'visitas':[bares[0].numero_visita,bares[1].numero_visita,bares[2].numero_visita]}
+     
+    return JsonResponse(datos, safe=False)
+
+  
         
